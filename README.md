@@ -353,5 +353,11 @@ I noticed that the value of count and total are stored in the stack.
 After switching the compiler to release mode, i have not noticed any movement of the breakpoint, nor am i able to see any assembly code, 
 as the program just executes to completion without stopping at the breakpoint.
 
+### Main points: 
+1. The stack is used to store multiple values during execution of code
+2. The CPU utilises a few registers, even for a small program.
+3. Some registers are used more often than others. (Depends on the program?)
+4. Unable to see changes of breakpoint location after switching to Release mode. 
+
 
 ---
