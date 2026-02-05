@@ -116,6 +116,23 @@ This code will store up to 4 values followed by the end of array character.  Run
 
 **[LAB BOOK - reflect on the nature and uses of the `>>` streaming operator and the `get()` function]**
 
+```c++
+#include <iostream>
+
+
+int main(int argn, char* argv[])
+{
+	char c[5];
+	std::cin.get(c, 5); // changed from std::cin >> c;
+	std:: cout << "c = " << c << std::endl;
+	// The issue with the >> streaming operator is that it does not handle input 
+	// that exceeds the size of the array. It doesn't even tell us where the terminator of the array is
+	// The >> streaming operator is not ideal for storing values onto an array.
+	
+	// The cin.get() version will automatically will not store more values than the size of the
+	// array that is declared that we declare the array to be, and no more. 
+}
+```
 ---
 
 ## Other Input Functions [Not required in Lab Book]
@@ -281,5 +298,60 @@ In **release** mode it is virtually impossible to associate a piece of assembly 
 Enjoy assembly language!!
 
 **[LAB BOOK - reflect on the use of the debugger in examining how the CPU executes your code]**
+
+
+## Reflection on the debugger and dissasembly: 
+
+---
+
+After executing (declaring) the first line: 
+
+const int start = 3;
+
+the variable is stored in the RIP register. not sure what it means yet. 
+
+The CPU uses the same register to store the next variables: 
+
+const int end = 10;
+int total = 0;
+
+it also uses the same register when executing the line: 
+
+while (count < end)
+
+
+
+when executing the line 
+
+total += count; 
+
+the program uses the same register (RIP) as well as the EFL register. I assume this is to update one of the variables' value, while performing arithmetic in another? 
+
+The program also uses RCX register when performing the 
++= operator, still, again, with the RIP register. 
+
+Overall, during the execution of the line with the += operator, it makes use of those registers several times. 
+
+
+for the count++ line: 
+RAX, RIP, and EFL registers are used in the last mov instruction. 
+
+This is how the CPU stores the count variable: 
+
+0x000000EDF7D5F854 = 00000005
+
+I say this because I noticed that it increments. 
+
+I also noticed that it is used for multiple variables; the count and total, when displaying it. 
+
+
+
+During the execution, and looking at the memory window of the stack, 
+I noticed that the value of count and total are stored in the stack.
+
+
+After switching the compiler to release mode, i have not noticed any movement of the breakpoint, nor am i able to see any assembly code, 
+as the program just executes to completion without stopping at the breakpoint.
+
 
 ---
