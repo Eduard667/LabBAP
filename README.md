@@ -357,7 +357,10 @@ as the program just executes to completion without stopping at the breakpoint.
 1. The stack is used to store multiple values during execution of code
 2. The CPU utilises a few registers, even for a small program.
 3. Some registers are used more often than others. (Depends on the program?)
-4. Unable to see changes of breakpoint location after switching to Release mode. 
+4. Unable to see changes of breakpoint location after switching to Release mode.
+
+## Overall:
+Using the debugger is a useful tool as it allows us to see exactly what is going on during the execution of our code, as well as seeing exactly which instructions are being used, in the dissasembly window, as well as, seeing exactly which registers are being used by the CPU to execute the program. It can help us understand, in case of errors in our code, why we may get errors, and fault in our logic. 
 
 
 ---
